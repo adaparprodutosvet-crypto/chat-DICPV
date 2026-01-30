@@ -5,45 +5,94 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Atendimento Virtual - DIVISÃO DE COMÉRCIO DE PRODUTOS VETERINÁRIOS - ADAPAR</title>
   <style>
-    body {
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
       font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
       background-color: #f4f7f9;
-      text-align: center;
     }
 
     header {
-      background-color: #004b23;
+      background-color: #003366; /* Azul marinho */
       color: white;
       padding: 1rem;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      margin: 0;
     }
 
     main {
       padding: 1rem;
+      text-align: center;
+      flex-shrink: 0;
+      background-color: #f4f7f9;
     }
 
-    /* Força o widget do Chatbase a se ajustar à tela */
-    iframe, .chatbase-chat-widget, #chatbase-script {
-      max-width: 100% !important;
-      width: 100% !important;
-      box-sizing: border-box;
+    main p {
+      margin: 0;
+      color: #333;
     }
 
-    /* Evita que o campo de texto estoure o layout */
-    .chatbase-chat-widget iframe {
-      width: 100vw !important;
-      height: 100vh !important;
-      max-width: 100% !important;
-      position: fixed !important;
-      bottom: 0;
-      right: 0;
-      left: 0;
+    .chatbase-container {
+      flex: 1;
+      width: 100%;
+      overflow: hidden;
+      position: relative;
     }
 
+    .chatbase-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* Responsividade para dispositivos móveis */
     @media (max-width: 768px) {
-      body {
-        font-size: 14px;
+      header h1 {
+        font-size: 1.2rem;
+      }
+
+      main {
+        padding: 0.75rem;
+      }
+
+      main p {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 0.75rem;
+      }
+
+      header h1 {
+        font-size: 1rem;
+      }
+
+      main {
+        padding: 0.5rem;
+      }
+
+      main p {
+        font-size: 0.85rem;
       }
     }
   </style>
@@ -57,10 +106,11 @@
     <p>Bem-vindo! Utilize o assistente virtual abaixo para tirar dúvidas.</p>
   </main>
 
-  <!-- Inserir o widget do Chatbase -->
-  <iframe
-    src="https://www.chatbase.co/chatbot-iframe/QSGo2saSQ-0O0VNtrbeIV"
-    width="100%"
-    style="height: 100%; min-height: 700px"
-    frameborder="0"
-></iframe>
+  <div class="chatbase-container">
+    <iframe
+      src="https://www.chatbase.co/chatbot-iframe/QSGo2saSQ-0O0VNtrbeIV"
+      title="Chatbot ADAPAR"
+    ></iframe>
+  </div>
+</body>
+</html>
